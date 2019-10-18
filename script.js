@@ -15,9 +15,25 @@ function displayWeather(queryUrl) {
     url: queryUrl,
     method: "GET"
   }).then(function(response) {
-      var weather = response.main.temp
-      var humidity =
+
+    
     console.log(response);
+      var location = response.name;
+      var weather = response.main.temp;
+      var humidity = response.main.humidity;
+      var date = new Date(response.dt);
+      var wind = response.wind.speed;
+
+      $('#weather').html(`
+          <h1>${location}</h1>
+          <h3>${date}</h3>
+          <h3>${weather}</h3>
+          <h3>${humidity}</h3>
+          <p>${wind}</p>
+      `);
+    console.log(response);
+    console.log(location);
+    console.log( $('#weather').html() );
     
   });
 }
